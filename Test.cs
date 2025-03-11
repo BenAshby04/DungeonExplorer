@@ -18,5 +18,61 @@ namespace DungeonExplorer
         {
             Debug.Assert(testing, "Test failed");
         }
+        public void checkAdjacentRooms(Room room, Map map)
+        {
+            int x = room.GetRoomX();
+            int y = room.GetRoomY();
+            bool roomFound = false;
+            bool roomOnXEdge = false;
+            bool roomOnYEdge = false;
+            bool roomOnWidthEdge = false;
+            bool roomOnHeightEdge = false;
+            if (x == 0)
+            {
+                roomOnXEdge = true;
+            }
+            if (y == 0)
+            {
+                roomOnYEdge = true;
+            }
+            if (x == map.width - 1)
+            {
+                roomOnWidthEdge = true;
+            }
+            if (y == map.height - 1)
+            {
+                roomOnHeightEdge = true;
+            }
+            if (roomOnXEdge == false)
+            {
+                if (map.layout[x - 1, y] == 1)
+                {
+                    roomFound = true;
+                }
+            }
+            if (roomOnYEdge == false)
+            {
+                if (map.layout[x, y - 1] == 1)
+                {
+                    roomFound = true;
+                }
+            }
+            if (roomOnWidthEdge == false)
+            {
+                if (map.layout[x + 1, y] == 1)
+                {
+                    roomFound = true;
+                }
+            }
+            if (roomOnHeightEdge == false)
+            {
+                if (map.layout[x, y + 1] == 1)
+                {
+                    roomFound = true;
+                }
+            }
+            Debug.Assert(roomFound, "No adjacent rooms found");
+        }
+
     }
 }
