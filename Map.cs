@@ -43,7 +43,9 @@ namespace DungeonExplorer
                     }
                 }
             }
-            
+            Test test = new Test();
+            test.checkAdjacentRooms(startingRoom, this);
+
         }
 
         //Change the room
