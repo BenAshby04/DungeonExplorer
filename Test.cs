@@ -18,6 +18,11 @@ namespace DungeonExplorer
         {
             Debug.Assert(testing, "Test failed");
         }
+        /// <summary>
+        /// Test to check if the player can move to an adjacent room
+        /// </summary>
+        /// <param name="room">Current Room</param>
+        /// <param name="map">Current Map</param>
         public void checkAdjacentRooms(Room room, Map map)
         {
             int x = room.GetRoomX();

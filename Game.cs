@@ -10,6 +10,9 @@ namespace DungeonExplorer
         private Room currentRoom;
         private Map map;
 
+        /// <summary>
+        /// Game Constructor
+        /// </summary>
         public Game()
         {
             //Initalise Starting Room Class
@@ -18,7 +21,9 @@ namespace DungeonExplorer
             //Initalise Map Class
             map = new Map(3, 3, currentRoom);
         }
-        // Start the game
+        /// <summary>
+        /// Start the game
+        /// </summary>
         public void Start()
         {
             bool nameSelect = true;

@@ -8,11 +8,12 @@ namespace DungeonExplorer
         public int width;
         public int height;
         public Room[,] roomLayoutArray;
-        // Map Constructor
-        // Arguments:
-        // width - the width of the map
-        // height - the height of the map
-        // startingRoom - the room the player starts in
+        /// <summary>
+        /// Map Constructor
+        /// </summary>
+        /// <param name="width">the width of the map</param>
+        /// <param name="height">the height of the map</param>
+        /// <param name="startingRoom">the room the player starts in</param>
         public Map(int width, int height, Room startingRoom)
         {
             // Create a new map
@@ -48,9 +49,11 @@ namespace DungeonExplorer
 
         }
 
-        //Change the room
-        //Arguments: currentRoom - the room the player is currently in
-        //Returns: the room the player wants to move to
+        /// <summary>
+        /// Change the room
+        /// </summary>
+        /// <param name="currentRoom">the room the player is currently in</param>
+        /// <returns>the room the player wants to move to</returns>
         public Room changeRoom(Room currentRoom)
         {
             string direction = "";
@@ -125,7 +128,9 @@ namespace DungeonExplorer
         }
         
 
-        // Display the current map
+        /// <summary>
+        /// Display the current map
+        /// </summary>
         public void DisplayMap()
         {
             Console.WriteLine("After reading your map you see:");

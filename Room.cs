@@ -13,10 +13,11 @@ namespace DungeonExplorer
         private int roomX;
         private int roomY;
 
-        // Room Constructor
-        // Arguments:
-        // roomX - the x position of the room
-        // roomY - the y position of the room
+        /// <summary>
+        /// Room Constructor
+        /// </summary>
+        /// <param name="roomX">the x position of the room</param>
+        /// <param name="roomY">the y position of the room</param>
         public Room(int roomX, int roomY)
         {
             // Get a random room title and description
@@ -78,8 +79,10 @@ namespace DungeonExplorer
 
         //Methods
 
-        // Get a random room title and description
-        // Returns: a list containing the room title and description
+        /// <summary>
+        /// Get a random room title and description
+        /// </summary>
+        /// <returns>a list containing the room title and description</returns>
         private List<string> GetNameAndDescription()
         {
 
@@ -94,7 +97,7 @@ namespace DungeonExplorer
                 StreamReader sr = new StreamReader(Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName + "//dungeons//Descriptions.txt");
                 line = sr.ReadLine();
 
-                // Checks if thee is a line to read
+                // Checks if there is a line to read
                 while (line != null)
                 {
                     // Splits the line into title and description
@@ -122,7 +125,9 @@ namespace DungeonExplorer
             return outputList;
         }
 
-        // Room Info Menu
+        /// <summary>
+        /// Room Info Menu
+        /// </summary>
         public void RoomInfoMenu()
         {
             bool roomMenu = true;
@@ -161,10 +166,11 @@ namespace DungeonExplorer
             }
         }
 
-        // Search the room
-        // Arguments:
-        // player - the player searching the room
-        // Returns: the player after searching the room
+        /// <summary>
+        /// Search the room
+        /// </summary>
+        /// <param name="player">the player searching the room</param>
+        /// <returns>the player after searching the room</returns>
         public Player SearchRoom(Player player)
         {
             // Check if the room has already been searched

@@ -3,16 +3,19 @@
 namespace DungeonExplorer
 {
 
-    // Player class that inherits from Entity
+    /// <summary>
+    /// Player class that inherits from Entity
+    /// </summary>
     public class Player : Entity
     {
       
         private List<Item> inventory = new List<Item>();
 
-        // Player Constructor
-        // Arguments:
-        // name - the name of the player
-        // health - the health of the player
+        /// <summary>
+        /// Player Constructor
+        /// </summary>
+        /// <param name="name">the name of the player</param>
+        /// <param name="health">the health of the player</param>
         public Player(string name, int health) 
         {
             // Set the player's name and health / maxHealth
@@ -26,7 +29,10 @@ namespace DungeonExplorer
             // Add the item to the player's inventory
             inventory.Add(item);
         }
-        // Inventory Getter
+        /// <summary>
+        /// Inventory Getter
+        /// </summary>
+        /// <returns>Output of the current inventory</returns>
         public string InventoryContents()
         {
             // Return the contents of the player's inventory
