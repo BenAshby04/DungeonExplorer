@@ -201,6 +201,15 @@ namespace DungeonExplorer
                 Console.WriteLine("You search the room");
                 Console.WriteLine("You find nothing of interest");
             }
+
+            Random monsterRnd = new Random();
+            int monsterChance = monsterRnd.Next(1, 101);
+            if (chance <= 50)
+            {
+                Monster monster = new Monster("Zombie", 5, 2);
+                player = monster.Attack(player);
+                player.AttackMonster(monster);
+            }
             searched = true;
             return player;
         }

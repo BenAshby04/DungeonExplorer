@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace DungeonExplorer
 {
@@ -42,6 +43,26 @@ namespace DungeonExplorer
                 output = output + item.GetName() + ", ";
             }
             return output;
+        }
+        public void AttackMonster(Monster monster)
+        {
+            // Attack the monster
+            // Makes the monster die straight away in this iteration will be chaged later down the line
+            monster.Health = 0;
+            // Output the attack
+            System.Console.WriteLine(Name + " attacks " + monster.Name + " and kills it.");
+            
+            if (monster.Health == 0)
+            {
+                // Drop loot
+                Console.WriteLine(monster.Name + " drops:");
+                List<Item> loot = monster.dropLoot();
+                foreach (Item item in loot)
+                {
+                    Console.WriteLine(item.GetName());
+                    PickUpItem(item);
+                }
+            }
         }
     }
 }
