@@ -90,7 +90,7 @@ namespace DungeonExplorer
                 else if (command == "map")
                 {
                     // View the map
-                    map.DisplayMap();
+                    map.DisplayMap(currentRoom);
                 }
                 else if (command == "exit")
                 {

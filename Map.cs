@@ -22,9 +22,9 @@ namespace DungeonExplorer
             Random rnd = new Random();
             layout = new int[width, height];
             roomLayoutArray = new Room[width, height];
-            for (int i = 0; i < width; i++)
+            for (int j = 0; j < width; j++)
             {
-                for (int j = 0; j < height; j++)
+                for (int i = 0; i < height; i++)
                 {
                     // Player always starts at top left of the map
                     // So top left is always 1
@@ -131,26 +131,45 @@ namespace DungeonExplorer
         /// <summary>
         /// Display the current map
         /// </summary>
-        public void DisplayMap()
+        public void DisplayMap(Room currentRoom)
         {
             Console.WriteLine("After reading your map you see:");
+            
+            int currentX = currentRoom.GetRoomX();
+            int currentY = currentRoom.GetRoomY();
+            Console.WriteLine($"Current Coordinates: ({currentX},{currentY})");
+            Console.WriteLine("Legend:");
+            Console.WriteLine("O = Room");
+            Console.WriteLine("X = No Room");
+            Console.WriteLine("P = Player");
             for (int j = 0; j < width; j++)
             {
                 for (int i = 0; i < height; i++)
                 {
+
+                    Console.Write("|");
                     // Displays a O if there is a room and a X if there isn't
                     if (layout[i, j] == 1)
                     {
-                        Console.Write("O");
+                        if (i == currentX && j == currentY)
+                        {
+                            Console.Write("P");
+                        }
+                        else
+                        {
+                            Console.Write("O");
+                        }
                     }
                     else
                     {
                         Console.Write("X");
                     }
+                    Console.Write($"({i},{j})|");
                 }
                 Console.WriteLine();
             }
         }
-        
+
+
     }
 }

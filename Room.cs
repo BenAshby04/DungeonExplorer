@@ -22,7 +22,7 @@ namespace DungeonExplorer
         {
             // Get a random room title and description
             SetRoomX(roomX);
-            SetRoomX(roomY);
+            SetRoomY(roomY);
             // Get a random room title and description
             List<string> roomInfo = GetNameAndDescription();
             // Set the room title and description
