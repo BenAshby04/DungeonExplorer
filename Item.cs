@@ -36,5 +36,10 @@ namespace DungeonExplorer
         {
             return Description;
         }
+
+        public int getItemID()
+        {
+            return ItemID;
+        }
     }
 }
