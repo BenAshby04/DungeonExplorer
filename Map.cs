@@ -35,6 +35,18 @@ namespace DungeonExplorer
                         layout[i, j] = 1;
                         roomLayoutArray[i, j] = startingRoom;
                     }
+                    else if(i == 1 && j == 0)
+                    {
+                        // Room to the right of the starting room
+                        layout[i, j] = 1;
+                        roomLayoutArray[i, j] = new Room(i, j);
+                    }
+                    else if (i == 0 && j == 1)
+                    {
+                        // Room below the starting room
+                        layout[i, j] = 1;
+                        roomLayoutArray[i, j] = new Room(i, j);
+                    }
                     else
                     {
                         // Randomly generate rooms
@@ -134,14 +146,16 @@ namespace DungeonExplorer
         public void DisplayMap(Room currentRoom)
         {
             Console.WriteLine("After reading your map you see:");
-            
+            // Get the current room coordinates
             int currentX = currentRoom.GetRoomX();
             int currentY = currentRoom.GetRoomY();
             Console.WriteLine($"Current Coordinates: ({currentX},{currentY})");
+            // Display the Legend
             Console.WriteLine("Legend:");
             Console.WriteLine("O = Room");
             Console.WriteLine("X = No Room");
             Console.WriteLine("P = Player");
+            // Display the Map
             for (int j = 0; j < width; j++)
             {
                 for (int i = 0; i < height; i++)

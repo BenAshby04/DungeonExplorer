@@ -43,7 +43,7 @@ namespace DungeonExplorer
             }
 
             // Initalise Player Class (not in constructor because it requires player name)
-            player = new Player(name, 10);
+            player = new Player(name, 10,4);
             
             
             //Allow Entry into main game Loop
@@ -60,17 +60,18 @@ namespace DungeonExplorer
                 Console.WriteLine("3) Room Info Menu");
                 Console.WriteLine("4) Search Room");
                 Console.WriteLine("5) View Map");
-                Console.WriteLine("6) Exit Game");
-                Console.WriteLine("Choose a command (check, move, room, search, map, exit): ");
+                Console.WriteLine("6) Check Health");
+                Console.WriteLine("7) Use Health Potion");
+                Console.WriteLine("8) Exit Game");
+                Console.WriteLine("Choose a command (check, move, room, search, map, health, use, exit): ");
                 Console.Write("> ");
                 // Get Main Game Menu Command
                 command = Console.ReadLine().ToLower();
 
                 // Check if main game menu command is valid
                 if (command == "check")
-                {
-                    string inventory = player.InventoryContents();
-                    Console.WriteLine($"Inventory: {inventory}");
+                { 
+                    player.inv.GetInventory();
                 }
                 else if (command == "move")
                 {
@@ -91,6 +92,18 @@ namespace DungeonExplorer
                 {
                     // View the map
                     map.DisplayMap(currentRoom);
+                }
+                else if (command == "health")
+                {
+                    // Check the player's health
+                    Console.WriteLine($"Player Health: {player.health}/{player.maxHealth}");
+                    Console.WriteLine("Press any key to continue");
+                    Console.ReadKey();
+                }
+                else if (command == "use")
+                {
+                    // Use a health potion
+                    player = player.inv.UseHealthPotion(player);
                 }
                 else if (command == "exit")
                 {

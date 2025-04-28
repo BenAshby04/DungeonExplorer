@@ -78,6 +78,23 @@ namespace DungeonExplorer
             }
             Debug.Assert(roomFound, "No adjacent rooms found");
         }
+        /// <summary>
+        /// Test to check if the monster is dead
+        /// </summary>
+        /// <param name="monsterHealth">Monster HP</param>
+        public void checkMonsterDead(int monsterHealth)
+        {
+            Debug.Assert(monsterHealth >= 0, "Monster health fell below 0");
+        }
+
+        /// <summary>
+        /// Test to check if the player is dead
+        /// </summary>
+        /// <param name="player">Player Object</param>
+        public void checkPlayerDead(Player player)
+        {
+            Debug.Assert(player.health >= 0, "Player health fell below 0");
+        }
 
     }
 }

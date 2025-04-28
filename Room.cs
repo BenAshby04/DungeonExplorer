@@ -12,9 +12,9 @@ namespace DungeonExplorer
         private bool searched;
         private int roomX;
         private int roomY;
-        public Sorcerer sorcerer;
-        public Monster monster;
-        public Zombie zombie;
+        public Sorcerer sorcerer = null;
+        public Monster monster = null;
+        public Zombie zombie = null;
         private string monsterPicked;
 
         /// <summary>
@@ -225,15 +225,37 @@ namespace DungeonExplorer
                 Console.WriteLine("You find nothing of interest");
             }
 
+            // Generate Random Number between 1 and 100
             Random monsterRnd = new Random();
             int monsterChance = monsterRnd.Next(1, 101);
+            // Check the random number
+            // 50% chance of finding a Zombie
             if (chance <= 50)
             {
                 Monster monster = new Monster(1,"Zombie", 5, 2);
-                player = monster.Attack(player);
-                player.AttackMonster(monster);
+                Zombie zombie = new Zombie(2, "Zombie", 5, 2);  
+                Fight fight = new Fight(player, sorcerer,zombie, "Zombie");
+                monsterPicked = "Zombie";
+                player = fight.FightMenu();
+                
             }
+            // 25% chance of finding a Sorcerer
+            else if (chance <= 75)
+            {
+                Monster monster = new Monster(1, "Sorcerer", 10, 4);
+                Sorcerer sorcerer = new Sorcerer(3, "Big Bad Sorcerer", 10, 4);
+                Fight fight = new Fight(player, sorcerer, zombie, "Sorcerer");
+                monsterPicked = "Sorcerer";
+                player = fight.FightMenu();
+            }
+            else
+            {
+                // No Monster
+                Console.WriteLine("No Monsters in this room!");
+            }
+            // Set the room as searched
             searched = true;
+            // Return player    
             return player;
         }
     }

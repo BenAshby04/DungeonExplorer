@@ -11,6 +11,7 @@ namespace DungeonExplorer
     {
       
         private List<Item> inventory = new List<Item>();
+        public Inventory inv = new Inventory(new List<Item>());
         public int Strength;
         public int Damage;
         public Weapon EquipedWeapon;
@@ -26,7 +27,11 @@ namespace DungeonExplorer
             health = hp;
             maxHealth = health;
             Strength = strength;
+            for (int i = 0; i < 3; i++) inv.AddItem(new Item(1, "Healing Potion", "A Bottle of Healing Potion"));
+            EquipedWeapon = new Weapon(1, "Wooden Sword", "A wooden sword", 5);
             Damage = EquipedWeapon.getAttackPower();
+            
+
 
         }
         // Inventory Setter
@@ -49,38 +54,6 @@ namespace DungeonExplorer
             }
             return output;
         }
-        // public void AttackMonster(Zombie zombie, Sorcerer sorcerer, string monsterType)
-        // {
-        //     bool MonsterPresent = false;
-        //     int monsterHP = 0;
-        //     string monsterName;
-        //     if (monsterType == "Zombie")
-        //     {
-        //         MonsterPresent = true;
-        //         monsterHP = zombie.health;
-        //         
-        //     }
-        //     else if (monsterType == "Sorcerer")
-        //     {
-        //         monsterHP = sorcerer.health;
-        //         MonsterPresent = true;
-        //     }
-        //     else if (monsterType == "None")
-        //     {
-        //         // Do Nothing
-        //     }
-        //     
-        //     if (monsterHP <= 0)
-        //     {
-        //         // Drop loot
-        //         Console.WriteLine(monster.Name + " drops:");
-        //         List<Item> loot = monster.dropLoot();
-        //         foreach (Item item in loot)
-        //         {
-        //             Console.WriteLine(item.GetName());
-        //             PickUpItem(item);
-        //         }
-        //     }
-        // }
+        
     }
 }

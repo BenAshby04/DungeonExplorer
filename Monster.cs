@@ -10,8 +10,15 @@ namespace DungeonExplorer
     {
         public int MonsterID;
         public int Damage { get; set; }
-        private List<Item> loot;
+        private List<Item> loot = new List<Item>();
         public int Health { get; set; }
+        /// <summary>
+        /// Monster Constructor
+        /// </summary>
+        /// <param name="monsterId">Monster ID</param>
+        /// <param name="name">Monster Name</param>
+        /// <param name="hp">Monster Health</param>
+        /// <param name="damage">Monster Strength</param>
         public Monster(int monsterId,string name, int hp, int damage) : base(name, hp, damage)
         {
             MonsterID = monsterId;
@@ -22,8 +29,10 @@ namespace DungeonExplorer
             generateLoot();
         }
 
-        
 
+        /// <summary>
+        /// Generate Loot
+        /// </summary>
         private void generateLoot()
         {
             Random rnd = new Random();
@@ -34,29 +43,22 @@ namespace DungeonExplorer
             }
 
             rnd = new Random();
-            int chance2 = rnd.Next(0, 2);
+            int chance2 = rnd.Next(0, 11);
             if(chance2 >= 6)
             {
                 loot.Add(new Item(1, "Healing Potion", "A Bottle of Healing Potion"));
             }
             
         }
+        /// <summary>
+        /// Gets Loot List
+        /// </summary>
+        /// <returns>Returns the loot list</returns>
         public List<Item> dropLoot()
         {
             return loot;
         }
-        /// <summary>
-        /// Monster performs an attack on the player
-        /// </summary>
-        /// <param name="player">Current Player</param>
-        /// <returns>Player after attack</returns>
-        public Player Attack(Player player)
-        {
-            player.health -= Damage;
-            Console.WriteLine(Name + " attacks " + player.Name + " for " + Damage + " damage");
-            return player;
-        }
-
+        
         
     }
 }
