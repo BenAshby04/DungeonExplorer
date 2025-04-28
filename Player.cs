@@ -11,18 +11,23 @@ namespace DungeonExplorer
     {
       
         private List<Item> inventory = new List<Item>();
-
+        public int Strength;
+        public int Damage;
+        public Weapon EquipedWeapon;
         /// <summary>
         /// Player Constructor
         /// </summary>
         /// <param name="name">the name of the player</param>
-        /// <param name="health">the health of the player</param>
-        public Player(string name, int health) 
+        /// <param name="hp">the health of the player</param>
+        public Player(string name, int hp, int strength) : base(name, hp, 0)
         {
             // Set the player's name and health / maxHealth
             Name = name;
-            Health = health;
+            health = hp;
             maxHealth = health;
+            Strength = strength;
+            Damage = EquipedWeapon.getAttackPower();
+
         }
         // Inventory Setter
         public void PickUpItem(Item item)
@@ -44,25 +49,38 @@ namespace DungeonExplorer
             }
             return output;
         }
-        public void AttackMonster(Monster monster)
-        {
-            // Attack the monster
-            // Makes the monster die straight away in this iteration will be chaged later down the line
-            monster.Health = 0;
-            // Output the attack
-            System.Console.WriteLine(Name + " attacks " + monster.Name + " and kills it.");
-            
-            if (monster.Health == 0)
-            {
-                // Drop loot
-                Console.WriteLine(monster.Name + " drops:");
-                List<Item> loot = monster.dropLoot();
-                foreach (Item item in loot)
-                {
-                    Console.WriteLine(item.GetName());
-                    PickUpItem(item);
-                }
-            }
-        }
+        // public void AttackMonster(Zombie zombie, Sorcerer sorcerer, string monsterType)
+        // {
+        //     bool MonsterPresent = false;
+        //     int monsterHP = 0;
+        //     string monsterName;
+        //     if (monsterType == "Zombie")
+        //     {
+        //         MonsterPresent = true;
+        //         monsterHP = zombie.health;
+        //         
+        //     }
+        //     else if (monsterType == "Sorcerer")
+        //     {
+        //         monsterHP = sorcerer.health;
+        //         MonsterPresent = true;
+        //     }
+        //     else if (monsterType == "None")
+        //     {
+        //         // Do Nothing
+        //     }
+        //     
+        //     if (monsterHP <= 0)
+        //     {
+        //         // Drop loot
+        //         Console.WriteLine(monster.Name + " drops:");
+        //         List<Item> loot = monster.dropLoot();
+        //         foreach (Item item in loot)
+        //         {
+        //             Console.WriteLine(item.GetName());
+        //             PickUpItem(item);
+        //         }
+        //     }
+        // }
     }
 }

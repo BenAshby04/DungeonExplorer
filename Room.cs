@@ -12,6 +12,10 @@ namespace DungeonExplorer
         private bool searched;
         private int roomX;
         private int roomY;
+        public Sorcerer sorcerer;
+        public Monster monster;
+        public Zombie zombie;
+        private string monsterPicked;
 
         /// <summary>
         /// Room Constructor
@@ -29,7 +33,26 @@ namespace DungeonExplorer
             SetTitle(roomInfo[0]);
             SetDescription(roomInfo[1]);
             SetSearched(false);
+            Random rnd = new Random();
+            int chance = rnd.Next(0, 101);
+            if (chance >= 75)
+            {
+                monsterPicked = "Sorcerer";
+                sorcerer = new Sorcerer(3,"Big Bad Sorcerer", 10, 4);
+            }
+            else if (chance >= 25)
+            {
+                monsterPicked = "Zombie";
+                zombie = new Zombie(2,"Zombie", 5, 2);
+            }
+            else
+            {
+                monsterPicked = "None";
+            }
+            
+            
         }
+
 
         
 
@@ -206,7 +229,7 @@ namespace DungeonExplorer
             int monsterChance = monsterRnd.Next(1, 101);
             if (chance <= 50)
             {
-                Monster monster = new Monster("Zombie", 5, 2);
+                Monster monster = new Monster(1,"Zombie", 5, 2);
                 player = monster.Attack(player);
                 player.AttackMonster(monster);
             }

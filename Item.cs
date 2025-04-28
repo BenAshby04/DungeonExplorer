@@ -11,6 +11,8 @@ namespace DungeonExplorer
         private int ItemID { get; set; }
         private string Name { get; set; }
         private string Description { get; set; }
+        
+        private bool Usable {get;set;}
 
         /// <summary>
         /// Item Constructor

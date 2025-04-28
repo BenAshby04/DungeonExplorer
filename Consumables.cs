@@ -10,7 +10,7 @@ namespace DungeonExplorer
             HealthEffect = healthEffect;
         }
 
-        public int getHealthEffect()
+        public int GetHealthEffect()
         {
             return HealthEffect;
         }

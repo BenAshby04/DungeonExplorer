@@ -19,7 +19,7 @@ namespace DungeonExplorer
             currentRoom = new Room(0, 0);
 
             //Initalise Map Class
-            map = new Map(3, 3, currentRoom);
+            map = new Map(5, 5, currentRoom);
         }
         /// <summary>
         /// Start the game
