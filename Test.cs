@@ -25,6 +25,7 @@ namespace DungeonExplorer
         /// <param name="map">Current Map</param>
         public void checkAdjacentRooms(Room room, Map map)
         {
+            // Get current Coordinates of the Room
             int x = room.GetRoomX();
             int y = room.GetRoomY();
             bool roomFound = false;
@@ -32,6 +33,7 @@ namespace DungeonExplorer
             bool roomOnYEdge = false;
             bool roomOnWidthEdge = false;
             bool roomOnHeightEdge = false;
+            // Check if the room is on the edge of the map
             if (x == 0)
             {
                 roomOnXEdge = true;
@@ -48,6 +50,7 @@ namespace DungeonExplorer
             {
                 roomOnHeightEdge = true;
             }
+            // Check to see if there are any adjacent rooms
             if (roomOnXEdge == false)
             {
                 if (map.layout[x - 1, y] == 1)
@@ -76,6 +79,7 @@ namespace DungeonExplorer
                     roomFound = true;
                 }
             }
+            // Debug Statement
             Debug.Assert(roomFound, "No adjacent rooms found");
         }
         /// <summary>
